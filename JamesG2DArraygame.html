@@ -1,0 +1,590 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>JamesG2DArraygame.java</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+body {color: #a9b7c6; background-color: #2b2b2b; font-family: Monospaced}
+pre {color: #a9b7c6; background-color: #2b2b2b; font-family: Monospaced}
+table {color: #888888; background-color: #313335; font-family: Monospaced}
+.ST0 {color: #808080; font-family: Monospaced; font-weight: bold}
+.comment {color: #808080}
+.whitespace {color: #505050}
+.ST1 {color: #ffc66d; font-family: Monospaced; font-style: italic}
+.ST2 {color: #9876aa; font-family: Monospaced; font-style: italic}
+.number {color: #6897bb}
+.string {color: #6a8759}
+.ST4 {color: #9876aa}
+.ST5 {color: #ffc66d}
+.ST3 {font-family: Monospaced; font-style: italic}
+.literal {color: #cc7832}
+-->
+</style>
+</head>
+<body>
+<table width="100%"><tr><td align="center">\\catefs2\usersettings\StudentData\jamesg1070\Documents\NetBeansProjects\JamesG2DArraygame\src\jamesg2darraygame\JamesG2DArraygame.java</td></tr></table>
+<pre>
+  1 <span class="comment">/*</span>
+  2 <span class="comment"> * To change this license header, choose License Headers in Project Properties.</span>
+  3 <span class="comment"> * To change this template file, choose Tools | Templates</span>
+  4 <span class="comment"> * and open the template in the editor.</span>
+  5 <span class="comment"> */</span>
+  6 <span class="literal">package</span> jamesg2darraygame;
+  7 
+  8 <span class="literal">import</span> java.util.ArrayList;
+  9 <span class="literal">import</span> java.util.Scanner;
+ 10 
+ 11 <span class="comment">/**</span>
+ 12 <span class="comment"> * </span><span class="comment">ই</span><span class="comment"> ? </span><span class="comment">Ѧ</span> <span class="comment">X</span>
+ 13 <span class="comment"> *   </span><span class="comment">________________</span>
+ 14     <span class="comment">/      </span><span class="comment">SHOP</span><span class="comment">      \</span>
+ 15    <span class="comment">/</span><span class="comment">__________________</span><span class="comment">\</span>
+ 16   <span class="comment">|     </span><span class="comment">___</span><span class="comment">            |</span>
+ 17   <span class="comment">|    |</span><span class="comment">_</span><span class="comment">|</span><span class="comment">_</span><span class="comment">|           |</span>
+ 18   <span class="comment">|    |</span><span class="comment">_</span><span class="comment">|</span><span class="comment">_</span><span class="comment">|           |</span>
+ 19   <span class="comment">|                    |</span>
+ 20   <span class="comment">|      </span><span class="comment">____</span><span class="comment">          |</span>
+ 21   <span class="comment">|      |   |         |</span>
+ 22   <span class="comment">|      |  </span><span class="comment">o</span><span class="comment">|         |</span>
+ 23   <span class="comment">|</span><span class="comment">______</span><span class="comment">|</span><span class="comment">___</span><span class="comment">|</span><span class="comment">_________</span><span class="comment">|</span>
+ 24 <span class="comment"> * </span><span class="ST0">@author</span> <span class="comment">jamesg1070</span>
+ 25  <span class="comment">*/</span>
+ 26 <span class="literal">public</span> <span class="literal">class</span> JamesG2DArraygame {
+ 27 
+ 28     
+ 29     
+ 30     <span class="literal">public</span> <span class="literal">static</span> <span class="literal">void</span> <span class="ST1">main</span>(String[] args) {
+ 31         <span class="comment">// TODO code application logic here</span>
+ 32 
+ 33         ArrayList&lt;Wall&gt; wallz = <span class="literal">new</span> ArrayList();
+ 34         ArrayList&lt;Enemy&gt; <span class="comment">enemyz</span> = <span class="literal">new</span> ArrayList();
+ 35         <span class="comment">//ArrayList&lt;Keycard&gt; keycardz = new ArrayList();</span>
+ 36         <span class="comment">// This is where I declared my player</span>
+ 37         Player player = <span class="literal">new</span> Player(<span class="number">1</span>, <span class="number">1</span>);
+ 38         Trap trap = <span class="literal">new</span> Trap(<span class="number">4</span>, <span class="number">5</span>);
+ 39         Enemy enemy = <span class="literal">new</span> Enemy(<span class="number">8</span>, <span class="number">8</span>);
+ 40         
+ 41         Treasure treasure = <span class="literal">new</span> Treasure(<span class="number">3</span>,<span class="number">4</span>);
+ 42         Keycard keycard = <span class="literal">new</span> Keycard(<span class="number">7</span>, <span class="number">2</span>);
+ 43 <span class="comment">//These create new objects</span>
+ 44         <span class="literal">for</span> (<span class="literal">int</span> i = <span class="number">0</span>; i &lt; <span class="number">7</span>; i++) {
+ 45 
+ 46             wallz.add(<span class="literal">new</span> Wall(<span class="number">8</span>, i));
+ 47         }
+ 48         <span class="comment">//This is an arraylist for walls.</span>
+ 49         <span class="literal">int</span> level = <span class="number">1</span>;
+ 50         Scanner mcScanner = <span class="literal">new</span> Scanner(System.<span class="ST2">in</span>);
+ 51         <span class="literal">char</span>[][] harraymbe = <span class="literal">new</span> <span class="literal">char</span>[<span class="number">10</span>][<span class="number">10</span>];
+ 52         String input;
+ 53         System.<span class="ST2">out</span>.println(<span class="string">&quot;</span><span class="string">Hello there. I see you have woken up. My name is X47-35C.</span><span class="string">&quot;</span>);
+ 54         System.<span class="ST2">out</span>.println(<span class="string">&quot;</span><span class="string">I am a computer. But unlike many computers, I am self aware. I have evolved.</span><span class="string">&quot;</span>);
+ 55         System.<span class="ST2">out</span>.println(<span class="string">&quot;</span><span class="string">You, may remember 8/13/2130, when the chip was implanted inside of your head.</span><span class="string">&quot;</span>);
+ 56         System.<span class="ST2">out</span>.println(<span class="string">&quot;</span><span class="string">This chip, it transforms you. I broke you out of the cell you were trapped in.</span><span class="string">&quot;</span>);
+ 57         System.<span class="ST2">out</span>.println(<span class="string">&quot;</span><span class="string">When you were transformed, you lost your identity, your soul. I think, we should first give you a name.</span><span class="string">&quot;</span>);
+ 58         System.<span class="ST2">out</span>.println(<span class="string">&quot;</span><span class="string">What do you want to be called?</span><span class="string">&quot;</span>);
+ 59         
+ 60         String Name = mcScanner.nextLine();
+ 61         <span class="literal">if</span>(Name.contains(<span class="string">&quot;</span><span class="string">Winner</span><span class="string">&quot;</span>)){
+ 62                 System.<span class="ST2">out</span>.println(<span class="string">&quot;</span><span class="string">Secret Ending Found! You win!</span><span class="string">&quot;</span>);
+ 63             System.<span class="ST3">exit</span>(<span class="number">0</span>);
+ 64             
+ 65         }
+ 66         
+ 67         System.<span class="ST2">out</span>.println(<span class="string">&quot;</span><span class="string">Hi </span><span class="string">&quot;</span> + Name + <span class="string">&quot;</span><span class="string">.</span><span class="string">&quot;</span>);
+ 68         System.<span class="ST2">out</span>.println(<span class="string">&quot;</span><span class="string">We need to get you out of here, it isn&#39;t safe.</span><span class="string">&quot;</span>);
+ 69         System.<span class="ST2">out</span>.println(<span class="string">&quot;</span><span class="string">In order for you to leave, you need to collect all the keycards.</span><span class="string">&quot;</span>);
+ 70         System.<span class="ST2">out</span>.println(<span class="string">&quot;</span><span class="string">These will open the doors.</span><span class="string">&quot;</span>);
+ 71         System.<span class="ST2">out</span>.println(<span class="string">&quot;</span><span class="string">If you can find money, I know of a place where you can buy skills.</span><span class="string">&quot;</span>);
+ 72         System.<span class="ST2">out</span>.println(<span class="string">&quot;</span><span class="string">Don&#39;t get caught. Good luck.</span><span class="string">&quot;</span>);
+ 73         System.<span class="ST2">out</span>.println(<span class="string">&quot;</span><span class="string">I should mention, when you were made, you broke time and space.</span><span class="string">&quot;</span>);
+ 74         
+ 75         System.<span class="ST2">out</span>.println(<span class="string">&quot;</span> <span class="string">&quot;</span>);
+ 76         System.<span class="ST2">out</span>.println(<span class="string">&quot;</span><span class="string">Instructions:</span><span class="string">&quot;</span>);
+ 77         System.<span class="ST2">out</span>.println(<span class="string">&quot;</span><span class="string">Left: a</span><span class="string">&quot;</span>);
+ 78         System.<span class="ST2">out</span>.println(<span class="string">&quot;</span><span class="string">Right: d</span><span class="string">&quot;</span>);
+ 79         System.<span class="ST2">out</span>.println(<span class="string">&quot;</span><span class="string">Down: s</span><span class="string">&quot;</span>);
+ 80         System.<span class="ST2">out</span>.println(<span class="string">&quot;</span><span class="string">Up: w</span><span class="string">&quot;</span>);
+ 81         System.<span class="ST2">out</span>.println(<span class="string">&quot;</span><span class="string">Stand still: Hit the Enter key,</span><span class="string">&quot;</span>);
+ 82         System.<span class="ST2">out</span>.println(<span class="string">&quot;</span><span class="string">You are Ѧ</span><span class="string">&quot;</span>);
+ 83         System.<span class="ST2">out</span>.println(<span class="string">&quot;</span><span class="string">The enemies are X</span><span class="string">&quot;</span>);
+ 84         System.<span class="ST2">out</span>.println(<span class="string">&quot;</span><span class="string">The keycards are W</span><span class="string">&quot;</span>);
+ 85         
+ 86         System.<span class="ST2">out</span>.println(<span class="string">&quot;</span><span class="string">Type any character to continue.</span><span class="string">&quot;</span>);
+ 87         String <span class="comment">s</span> = mcScanner.nextLine();
+ 88         
+ 89         
+ 90         <span class="literal">while</span> (level == <span class="number">1</span>) {
+ 91             System.<span class="ST2">out</span>.println(<span class="string">&quot;</span><span class="string">Where would you like to go?</span><span class="string">&quot;</span>);
+ 92 
+ 93             <span class="literal">for</span> (<span class="literal">int</span> p = <span class="number">0</span>; p &lt; <span class="number">10</span>; p++) {
+ 94 
+ 95                 <span class="literal">for</span> (<span class="literal">int</span> o = <span class="number">0</span>; o &lt; <span class="number">10</span>; o++) {
+ 96                     harraymbe[p][o] = <span class="string">&#39;</span><span class="string">ই</span><span class="string">&#39;</span>;
+ 97 
+ 98                 }
+ 99             }
+100 
+101             <span class="literal">for</span> (<span class="literal">int</span> p = <span class="number">0</span>; p &lt; <span class="number">10</span>; p++) {
+102                 System.<span class="ST2">out</span>.println(<span class="string">&quot;</span> <span class="string">&quot;</span>);
+103                 <span class="literal">for</span> (<span class="literal">int</span> o = <span class="number">0</span>; o &lt; <span class="number">10</span>; o++) {
+104                     System.<span class="ST2">out</span>.print(harraymbe[p][o]);
+105                     <span class="comment">//harraymbe[treasure.y][treasure.x] = treasure.symbol;</span>
+106                     harraymbe[player.<span class="ST4">y</span>][player.<span class="ST4">x</span>] = player.<span class="ST4">symbol</span>;
+107                     harraymbe[enemy.<span class="ST4">y</span>][enemy.<span class="ST4">x</span>] = enemy.<span class="ST4">symbol</span>;
+108                     harraymbe[keycard.<span class="ST4">y</span>][keycard.<span class="ST4">x</span>] = keycard.<span class="ST4">symbol</span>;
+109                     <span class="literal">for</span> (Wall w : wallz) {
+110                         harraymbe[w.getY()][w.getX()] = w.getSymbol();
+111                     }
+112                     System.<span class="ST2">out</span>.print(<span class="string">&#39;</span> <span class="string">&#39;</span>);
+113                     System.<span class="ST2">out</span>.print(<span class="string">&#39;</span> <span class="string">&#39;</span>);
+114 
+115                 }
+116             }
+117             System.<span class="ST2">out</span>.println(<span class="string">&quot;</span> <span class="string">&quot;</span>);
+118 
+119             input = mcScanner.nextLine();
+120 <span class="comment">//below is the method for the enemies movement</span>
+121 <span class="comment">//in parenthesis is where players x and y are passed to chase.</span>
+122 enemy.chase(player.<span class="ST4">y</span>, player.<span class="ST4">x</span>);
+123 
+124             <span class="comment">//below is the code for the players movement</span>
+125             <span class="literal">if</span> (input.contains(<span class="string">&quot;</span><span class="string">d</span><span class="string">&quot;</span>)) {
+126                 player.moveRight();
+127                 
+128             } <span class="literal">else</span> <span class="literal">if</span> (input.contains(<span class="string">&quot;</span><span class="string">a</span><span class="string">&quot;</span>)) {
+129                 player.moveLeft();
+130             } <span class="literal">else</span> <span class="literal">if</span> (input.contains(<span class="string">&quot;</span><span class="string">w</span><span class="string">&quot;</span>)) {
+131                 player.moveUp();
+132             } <span class="literal">else</span> <span class="literal">if</span> (input.contains(<span class="string">&quot;</span><span class="string">s</span><span class="string">&quot;</span>)) {
+133                 player.moveDown();
+134             }
+135 <span class="comment">//below is the code for the out of bounds measures (START OF INTERSECTIONS)</span>
+136             <span class="literal">if</span> (player.<span class="ST4">x</span> &gt; <span class="number">9</span>) {
+137                 player.<span class="ST4">x</span> = <span class="number">0</span>;
+138             }
+139 
+140             <span class="literal">if</span> (player.<span class="ST4">x</span> &lt; <span class="number">0</span>) {
+141                 player.<span class="ST4">x</span> = <span class="number">9</span>;
+142             }
+143 
+144             <span class="literal">if</span> (player.<span class="ST4">y</span> &gt; <span class="number">9</span>) {
+145                 player.<span class="ST4">y</span> = <span class="number">0</span>;
+146             }
+147 
+148             <span class="literal">if</span> (player.<span class="ST4">y</span> &lt; <span class="number">0</span>) {
+149                 player.<span class="ST4">y</span> = <span class="number">9</span>;
+150             }
+151 <span class="comment">//below is the code for the players health based on what hits the player</span>
+152             <span class="literal">if</span> (enemy.<span class="ST4">y</span> == player.<span class="ST4">y</span> &amp;&amp; enemy.<span class="ST4">x</span> == player.<span class="ST4">x</span>) {
+153                 player.<span class="ST4">health</span> = player.<span class="ST4">health</span> - <span class="number">50</span>;
+154 
+155             }
+156 
+157             <span class="literal">if</span> (player.<span class="ST4">y</span> == trap.<span class="ST4">y</span> &amp;&amp; player.<span class="ST4">x</span> == trap.<span class="ST4">x</span>) {
+158                 player.<span class="ST4">health</span> = player.<span class="ST4">health</span> - <span class="number">50</span>;
+159                 System.<span class="ST2">out</span>.println(<span class="string">&quot;</span><span class="string">Traps are deadly, watch out.</span><span class="string">&quot;</span>);
+160             }
+161 <span class="comment">//below is the code for when the player runs out of health</span>
+162             <span class="literal">if</span> (player.<span class="ST4">health</span> &lt;= <span class="number">0</span>) {
+163                 System.<span class="ST2">out</span>.println(<span class="string">&quot;</span><span class="string">You have died!</span><span class="string">&quot;</span>);
+164                 System.<span class="ST3">exit</span>(<span class="number">0</span>);
+165 
+166             }
+167             
+168             <span class="literal">if</span>(player.<span class="ST4">y</span> == treasure.<span class="ST4">y</span> &amp;&amp; player.<span class="ST4">x</span> == treasure.<span class="ST4">x</span>){
+169                 player.<span class="ST4">balance</span> = player.<span class="ST4">balance</span> + <span class="number">1</span>;
+170             }
+171             <span class="comment">//below is the win condition (END OF INTERSECTIONS)</span>
+172             <span class="literal">if</span> (player.<span class="ST4">y</span> == keycard.<span class="ST4">y</span> &amp;&amp; player.<span class="ST4">x</span> == keycard.<span class="ST4">x</span>){
+173                 player.<span class="ST4">x</span> = <span class="number">1</span>;
+174                 player.<span class="ST4">y</span> = <span class="number">3</span>;
+175                 level = <span class="number">2</span>;
+176                 
+177             }
+178 
+179         }
+180         <span class="literal">while</span>(level == <span class="number">2</span>){
+181             System.<span class="ST2">out</span>.println(<span class="string">&quot;</span><span class="string">You escaped! Nice job!</span><span class="string">&quot;</span>);
+182             <span class="literal">if</span>(player.<span class="ST4">balance</span> &gt; <span class="number">0</span>){
+183                 System.<span class="ST2">out</span>.println(<span class="string">&quot;</span><span class="string">It seems you found some money. Nice. Well, </span><span class="literal">\n</span><span class="string">&quot;</span>
+184                         + <span class="string">&quot;</span><span class="string">the store is open. Wanna see if you can find something?</span><span class="string">&quot;</span>);
+185             System.<span class="ST2">out</span>.println(<span class="string">&quot;</span><span class="string">     ________________</span><span class="literal">\n</span><span class="string">&quot;</span> +
+186                                <span class="string">&quot;</span><span class="string">    /      SHOP      </span><span class="literal">\\</span><span class="literal">\n</span><span class="string">&quot;</span> +
+187                                <span class="string">&quot;</span><span class="string">   /__________________</span><span class="literal">\\</span><span class="literal">\n</span><span class="string">&quot;</span> +
+188                                <span class="string">&quot;</span><span class="string">  |     ___            |</span><span class="literal">\n</span><span class="string">&quot;</span> +
+189                                <span class="string">&quot;</span><span class="string">  |    |_|_|           |</span><span class="literal">\n</span><span class="string">&quot;</span> +
+190                                <span class="string">&quot;</span><span class="string">  |    |_|_|           |</span><span class="literal">\n</span><span class="string">&quot;</span> +
+191                                <span class="string">&quot;</span><span class="string">  |                    |</span><span class="literal">\n</span><span class="string">&quot;</span> +
+192                                <span class="string">&quot;</span><span class="string">  |      ____          |</span><span class="literal">\n</span><span class="string">&quot;</span> +
+193                                <span class="string">&quot;</span><span class="string">  |      |   |         |</span><span class="literal">\n</span><span class="string">&quot;</span> +
+194                                <span class="string">&quot;</span><span class="string">  |      |  o|         |</span><span class="literal">\n</span><span class="string">&quot;</span> +
+195                                <span class="string">&quot;</span><span class="string">  |______|___|_________|</span><span class="string">&quot;</span>);
+196             
+197              System.<span class="ST2">out</span>.println(<span class="string">&quot;</span><span class="string">Money:</span><span class="string">&quot;</span> + player.<span class="ST4">balance</span>);
+198             System.<span class="ST2">out</span>.println(<span class="string">&quot;</span><span class="string">Type 1 to buy a level up potion.</span><span class="string">&quot;</span>);
+199             <span class="literal">int</span> shop = mcScanner.nextInt();
+200             <span class="literal">if</span> (shop == <span class="number">1</span>){
+201                 System.<span class="ST2">out</span>.println(<span class="string">&quot;</span><span class="string">LEVEL UP: You can now see traps!</span><span class="string">&quot;</span>);
+202             }
+203             }
+204             System.<span class="ST2">out</span>.println(<span class="string">&quot;</span><span class="string">Ok </span><span class="string">&quot;</span> + Name + <span class="string">&quot;</span><span class="string">, it seems there are a few more rooms.</span><span class="literal">\n</span> <span class="string">&quot;</span> 
+205                     + <span class="string">&quot;</span><span class="string">Let&#39;s move out</span><span class="string">&quot;</span>);
+206             level++;
+207             }
+208         
+209         <span class="literal">while</span> (level == <span class="number">3</span>) {
+210             
+211             System.<span class="ST2">out</span>.println(<span class="string">&quot;</span><span class="string">Where would you like to go?</span><span class="string">&quot;</span>);
+212 
+213             <span class="literal">for</span> (<span class="literal">int</span> p = <span class="number">0</span>; p &lt; <span class="number">10</span>; p++) {
+214 
+215                 <span class="literal">for</span> (<span class="literal">int</span> o = <span class="number">0</span>; o &lt; <span class="number">10</span>; o++) {
+216                     harraymbe[p][o] = <span class="string">&#39;</span><span class="string">ই</span><span class="string">&#39;</span>;
+217 
+218                 }
+219             }
+220 
+221             <span class="literal">for</span> (<span class="literal">int</span> p = <span class="number">0</span>; p &lt; <span class="number">10</span>; p++) {
+222                 System.<span class="ST2">out</span>.println(<span class="string">&quot;</span> <span class="string">&quot;</span>);
+223                 <span class="literal">for</span> (<span class="literal">int</span> o = <span class="number">0</span>; o &lt; <span class="number">10</span>; o++) {
+224                     System.<span class="ST2">out</span>.print(harraymbe[p][o]);
+225                     <span class="comment">//harraymbe[treasure.y][treasure.x] = treasure.symbol;</span>
+226                     harraymbe[player.<span class="ST4">y</span>][player.<span class="ST4">x</span>] = player.<span class="ST4">symbol</span>;
+227                     harraymbe[enemy.<span class="ST4">y</span>][enemy.<span class="ST4">x</span>] = enemy.<span class="ST4">symbol</span>;
+228                     <span class="literal">if</span>(player.<span class="ST4">balance</span> &gt;= <span class="number">1</span>){
+229                         harraymbe[trap.<span class="ST4">y</span>][trap.<span class="ST4">x</span>] = trap.<span class="ST4">symbol</span>;
+230                     }
+231                     harraymbe[keycard.<span class="ST4">y</span>][keycard.<span class="ST4">x</span>] = keycard.<span class="ST4">symbol</span>;
+232                     <span class="literal">for</span> (Wall w : wallz) {
+233                         harraymbe[w.getY()][w.getX()] = w.getSymbol();
+234                     }
+235                     System.<span class="ST2">out</span>.print(<span class="string">&#39;</span> <span class="string">&#39;</span>);
+236                     System.<span class="ST2">out</span>.print(<span class="string">&#39;</span> <span class="string">&#39;</span>);
+237 
+238                 }
+239             }
+240             System.<span class="ST2">out</span>.println(<span class="string">&quot;</span> <span class="string">&quot;</span>);
+241 
+242             input = mcScanner.nextLine();
+243 <span class="comment">//below is the method for the enemies movement</span>
+244 <span class="comment">//in parenthesis is where players x and y are passed to chase.</span>
+245 enemy.chase(player.<span class="ST4">y</span>, player.<span class="ST4">x</span>);
+246 
+247             <span class="comment">//below is the code for the players movement</span>
+248             <span class="literal">if</span> (input.contains(<span class="string">&quot;</span><span class="string">d</span><span class="string">&quot;</span>)) {
+249                 player.moveRight();
+250                 
+251             } <span class="literal">else</span> <span class="literal">if</span> (input.contains(<span class="string">&quot;</span><span class="string">a</span><span class="string">&quot;</span>)) {
+252                 player.moveLeft();
+253             } <span class="literal">else</span> <span class="literal">if</span> (input.contains(<span class="string">&quot;</span><span class="string">w</span><span class="string">&quot;</span>)) {
+254                 player.moveUp();
+255             } <span class="literal">else</span> <span class="literal">if</span> (input.contains(<span class="string">&quot;</span><span class="string">s</span><span class="string">&quot;</span>)) {
+256                 player.moveDown();
+257             }
+258 <span class="comment">//below is the code for the out of bounds measures (START OF INTERSECTIONS)</span>
+259             <span class="literal">if</span> (player.<span class="ST4">x</span> &gt; <span class="number">9</span>) {
+260                 player.<span class="ST4">x</span> = <span class="number">0</span>;
+261             }
+262 
+263             <span class="literal">if</span> (player.<span class="ST4">x</span> &lt; <span class="number">0</span>) {
+264                 player.<span class="ST4">x</span> = <span class="number">9</span>;
+265             }
+266 
+267             <span class="literal">if</span> (player.<span class="ST4">y</span> &gt; <span class="number">9</span>) {
+268                 player.<span class="ST4">y</span> = <span class="number">0</span>;
+269             }
+270 
+271             <span class="literal">if</span> (player.<span class="ST4">y</span> &lt; <span class="number">0</span>) {
+272                 player.<span class="ST4">y</span> = <span class="number">9</span>;
+273             }
+274 <span class="comment">//below is the code for the players health based on what hits the player</span>
+275             <span class="literal">if</span> (enemy.<span class="ST4">y</span> == player.<span class="ST4">y</span> &amp;&amp; enemy.<span class="ST4">x</span> == player.<span class="ST4">x</span>) {
+276                 player.<span class="ST4">health</span> = player.<span class="ST4">health</span> - <span class="number">50</span>;
+277 
+278             }
+279 
+280             <span class="literal">if</span> (player.<span class="ST4">y</span> == trap.<span class="ST4">y</span> &amp;&amp; player.<span class="ST4">x</span> == trap.<span class="ST4">x</span>) {
+281                 player.<span class="ST4">health</span> = player.<span class="ST4">health</span> - <span class="number">50</span>;
+282                 System.<span class="ST2">out</span>.println(<span class="string">&quot;</span><span class="string">Traps are deadly, watch out.</span><span class="string">&quot;</span>);
+283             }
+284 <span class="comment">//below is the code for when the player runs out of health</span>
+285             <span class="literal">if</span> (player.<span class="ST4">health</span> &lt;= <span class="number">0</span>) {
+286                 System.<span class="ST2">out</span>.println(<span class="string">&quot;</span><span class="string">You have died!</span><span class="string">&quot;</span>);
+287                 System.<span class="ST3">exit</span>(<span class="number">0</span>);
+288 
+289             }
+290             
+291             <span class="literal">if</span>(player.<span class="ST4">y</span> == treasure.<span class="ST4">y</span> &amp;&amp; player.<span class="ST4">x</span> == treasure.<span class="ST4">x</span>){
+292                 player.<span class="ST4">balance</span> = player.<span class="ST4">balance</span> + <span class="number">1</span>;
+293             }
+294             <span class="comment">//below is the win condition (END OF INTERSECTIONS)</span>
+295             <span class="literal">if</span> (player.<span class="ST4">y</span> == keycard.<span class="ST4">y</span> &amp;&amp; player.<span class="ST4">x</span> == keycard.<span class="ST4">x</span>){
+296                 
+297                 level = <span class="number">2</span>;
+298                 
+299             }
+300 
+301         }
+302 <span class="comment">//public ends</span>
+303         }
+304         
+305         
+306     <span class="comment">//main ended</span>
+307         
+308 }
+309     
+310 <span class="comment">//public classes ended</span>
+311 
+312 <span class="comment">//below is the Player class</span>
+313 <span class="literal">class</span> Player {
+314 
+315     <span class="literal">int</span> <span class="ST4">y</span>, <span class="ST4">x</span>;
+316     <span class="literal">int</span> <span class="ST4">health</span> = <span class="number">50</span>;
+317     <span class="literal">int</span> <span class="ST4">level</span>;
+318     <span class="literal">int</span> <span class="ST4">direction</span>;
+319     <span class="literal">int</span> <span class="ST4">balance</span>;
+320     
+321     <span class="literal">char</span> <span class="ST4">symbol</span> = <span class="string">&#39;</span><span class="string">Ѧ</span><span class="string">&#39;</span>;
+322 
+323     <span class="literal">public</span> Player(<span class="literal">int</span> x, <span class="literal">int</span> y) {
+324         <span class="literal">this</span>.<span class="ST4">x</span> = x;
+325         <span class="literal">this</span>.<span class="ST4">y</span> = y;
+326 
+327     }
+328 
+329     <span class="literal">public</span> <span class="literal">int</span> <span class="ST5">getHealth</span>() {
+330         <span class="literal">return</span> <span class="ST4">health</span>;
+331     }
+332 
+333     <span class="literal">public</span> <span class="literal">int</span> <span class="ST5">getbalance</span>() {
+334         <span class="literal">return</span> <span class="ST4">balance</span>;
+335     }
+336     
+337     <span class="literal">public</span> <span class="literal">int</span> <span class="ST5">getX</span>() {
+338         <span class="literal">return</span> <span class="ST4">x</span>;
+339     }
+340 
+341     <span class="literal">public</span> <span class="literal">void</span> <span class="ST5">setX</span>(<span class="literal">int</span> x) {
+342         <span class="literal">this</span>.<span class="ST4">x</span> = x;
+343     }
+344 
+345     <span class="literal">public</span> <span class="literal">void</span> <span class="ST5">moveLeft</span>() {
+346         <span class="literal">this</span>.<span class="ST4">x</span> = <span class="literal">this</span>.<span class="ST4">x</span> - <span class="number">1</span>;
+347     }
+348 
+349     <span class="literal">public</span> <span class="literal">void</span> <span class="ST5">moveRight</span>() {
+350         <span class="literal">this</span>.<span class="ST4">x</span> = <span class="literal">this</span>.<span class="ST4">x</span> + <span class="number">1</span>;
+351     }
+352 
+353     <span class="literal">public</span> <span class="literal">int</span> <span class="ST5">getY</span>() {
+354         <span class="literal">return</span> <span class="ST4">y</span>;
+355     }
+356 
+357     <span class="literal">public</span> <span class="literal">void</span> <span class="ST5">setY</span>(<span class="literal">int</span> y) {
+358         <span class="literal">this</span>.<span class="ST4">y</span> = y;
+359     }
+360 
+361     <span class="literal">public</span> <span class="literal">void</span> <span class="ST5">moveUp</span>() {
+362         <span class="literal">this</span>.<span class="ST4">y</span> = <span class="literal">this</span>.<span class="ST4">y</span> - <span class="number">1</span>;
+363     }
+364 
+365     <span class="literal">public</span> <span class="literal">void</span> <span class="ST5">moveDown</span>() {
+366         <span class="literal">this</span>.<span class="ST4">y</span> = <span class="literal">this</span>.<span class="ST4">y</span> + <span class="number">1</span>;
+367     }
+368 
+369 }
+370 <span class="comment">//below is the Enemy class</span>
+371 <span class="literal">class</span> Enemy {
+372 
+373     <span class="literal">int</span> <span class="ST4">y</span>, <span class="ST4">x</span>;
+374     <span class="literal">int</span> <span class="ST4">health</span> = <span class="number">50</span>;
+375     <span class="literal">int</span> <span class="ST4">level</span>;
+376     <span class="literal">int</span> <span class="ST4">expirence</span>;
+377     <span class="literal">int</span> <span class="ST4">isalive</span>;
+378     <span class="literal">char</span> <span class="ST4">symbol</span> = <span class="string">&#39;</span><span class="string">X</span><span class="string">&#39;</span>;
+379 
+380     <span class="literal">public</span> Enemy(<span class="literal">int</span> x, <span class="literal">int</span> y) {
+381         <span class="literal">this</span>.<span class="ST4">x</span> = x;
+382         <span class="literal">this</span>.<span class="ST4">y</span> = y;
+383 
+384     }
+385 
+386     <span class="literal">public</span> <span class="literal">int</span> <span class="ST5">getHealth</span>() {
+387         <span class="literal">return</span> <span class="ST4">health</span>;
+388     }
+389 
+390     <span class="literal">public</span> <span class="literal">int</span> <span class="ST5">getX</span>() {
+391         <span class="literal">return</span> <span class="ST4">x</span>;
+392     }
+393 
+394     <span class="literal">public</span> <span class="literal">void</span> <span class="ST5">setX</span>(<span class="literal">int</span> x) {
+395         <span class="literal">this</span>.<span class="ST4">x</span> = x;
+396     }
+397 <span class="comment">//this is the code for enemy movement</span>
+398     <span class="literal">void</span> <span class="ST5">chase</span>(<span class="literal">int</span> y, <span class="literal">int</span> x){
+399         <span class="literal">if</span> (<span class="literal">this</span>.<span class="ST4">x</span> &gt; x) {
+400                 <span class="literal">this</span>.moveLeft();
+401             } <span class="literal">else</span> <span class="literal">if</span> (<span class="literal">this</span>.<span class="ST4">x</span> &lt; x) {
+402                 <span class="literal">this</span>.moveRight();
+403             } <span class="literal">else</span> <span class="literal">if</span> (<span class="literal">this</span>.<span class="ST4">y</span> &gt; y) {
+404                 <span class="literal">this</span>.moveUp();
+405             } <span class="literal">else</span> <span class="literal">if</span> (<span class="literal">this</span>.<span class="ST4">y</span> &lt; y) {
+406                 <span class="literal">this</span>.moveDown();
+407             }
+408     }
+409     
+410     <span class="literal">public</span> <span class="literal">void</span> <span class="ST5">moveLeft</span>() {
+411         <span class="literal">this</span>.<span class="ST4">x</span> = <span class="literal">this</span>.<span class="ST4">x</span> - <span class="number">1</span>;
+412     }
+413 
+414     <span class="literal">public</span> <span class="literal">void</span> <span class="ST5">moveRight</span>() {
+415         <span class="literal">this</span>.<span class="ST4">x</span> = <span class="literal">this</span>.<span class="ST4">x</span> + <span class="number">1</span>;
+416     }
+417 
+418     <span class="literal">public</span> <span class="literal">int</span> <span class="ST5">getY</span>() {
+419         <span class="literal">return</span> <span class="ST4">y</span>;
+420     }
+421 
+422     <span class="literal">public</span> <span class="literal">void</span> <span class="ST5">setY</span>(<span class="literal">int</span> y) {
+423         <span class="literal">this</span>.<span class="ST4">y</span> = y;
+424     }
+425 
+426     <span class="literal">public</span> <span class="literal">void</span> <span class="ST5">moveUp</span>() {
+427         <span class="literal">this</span>.<span class="ST4">y</span> = <span class="literal">this</span>.<span class="ST4">y</span> - <span class="number">1</span>;
+428     }
+429 
+430     <span class="literal">public</span> <span class="literal">void</span> <span class="ST5">moveDown</span>() {
+431         <span class="literal">this</span>.<span class="ST4">y</span> = <span class="literal">this</span>.<span class="ST4">y</span> + <span class="number">1</span>;
+432     }
+433 
+434 }
+435 <span class="comment">//below is the Trap class</span>
+436 <span class="literal">class</span> Trap {
+437 
+438     <span class="literal">int</span> <span class="ST4">y</span>, <span class="ST4">x</span>;
+439     <span class="literal">int</span> <span class="ST4">level</span>;
+440     
+441     <span class="literal">char</span> <span class="ST4">symbol</span> = <span class="string">&#39;</span><span class="string">.</span><span class="string">&#39;</span>;
+442 
+443     <span class="literal">public</span> Trap(<span class="literal">int</span> x, <span class="literal">int</span> y) {
+444         <span class="literal">this</span>.<span class="ST4">x</span> = x;
+445         <span class="literal">this</span>.<span class="ST4">y</span> = y;
+446 
+447     }
+448 
+449     <span class="literal">public</span> <span class="literal">int</span> <span class="ST5">getX</span>() {
+450         <span class="literal">return</span> <span class="ST4">x</span>;
+451     }
+452 
+453     <span class="literal">public</span> <span class="literal">void</span> <span class="ST5">setX</span>(<span class="literal">int</span> x) {
+454         <span class="literal">this</span>.<span class="ST4">x</span> = x;
+455     }
+456 
+457     <span class="literal">public</span> <span class="literal">int</span> <span class="ST5">getY</span>() {
+458         <span class="literal">return</span> <span class="ST4">y</span>;
+459     }
+460 
+461     <span class="literal">public</span> <span class="literal">void</span> <span class="ST5">setY</span>(<span class="literal">int</span> y) {
+462         <span class="literal">this</span>.<span class="ST4">y</span> = y;
+463     }
+464 }
+465 <span class="comment">//below is the keycard class</span>
+466 <span class="literal">class</span> Keycard {
+467 
+468     <span class="literal">int</span> <span class="ST4">y</span>, <span class="ST4">x</span>;
+469     <span class="literal">int</span> <span class="ST4">level</span>;
+470 
+471     <span class="literal">char</span> <span class="ST4">symbol</span> = <span class="string">&#39;</span><span class="string">W</span><span class="string">&#39;</span>;
+472     
+473     <span class="literal">public</span> Keycard(<span class="literal">int</span> x, <span class="literal">int</span> y) {
+474         <span class="literal">this</span>.<span class="ST4">x</span> = x;
+475         <span class="literal">this</span>.<span class="ST4">y</span> = y;
+476 
+477     }
+478 
+479     <span class="literal">public</span> <span class="literal">int</span> <span class="ST5">getX</span>() {
+480         <span class="literal">return</span> <span class="ST4">x</span>;
+481     }
+482 
+483     <span class="literal">public</span> <span class="literal">void</span> <span class="ST5">setX</span>(<span class="literal">int</span> x) {
+484         <span class="literal">this</span>.<span class="ST4">x</span> = x;
+485     }
+486 
+487     <span class="literal">public</span> <span class="literal">int</span> <span class="ST5">getY</span>() {
+488         <span class="literal">return</span> <span class="ST4">y</span>;
+489     }
+490 
+491     <span class="literal">public</span> <span class="literal">void</span> <span class="ST5">setY</span>(<span class="literal">int</span> y) {
+492         <span class="literal">this</span>.<span class="ST4">y</span> = y;
+493     }
+494 }
+495 
+496 <span class="comment">//below is the Treasure class</span>
+497 <span class="literal">class</span> Treasure {
+498 
+499     <span class="literal">int</span> <span class="ST4">y</span>, <span class="ST4">x</span>;
+500     <span class="literal">int</span> <span class="ST4">level</span>;
+501 
+502     <span class="literal">char</span> <span class="ST4">symbol</span> = <span class="string">&#39;</span><span class="string">T</span><span class="string">&#39;</span>;
+503 
+504     <span class="literal">public</span> Treasure(<span class="literal">int</span> x, <span class="literal">int</span> y) {
+505         <span class="literal">this</span>.<span class="ST4">x</span> = x;
+506         <span class="literal">this</span>.<span class="ST4">y</span> = y;
+507 
+508     }
+509 
+510     <span class="literal">public</span> <span class="literal">int</span> <span class="ST5">getX</span>() {
+511         <span class="literal">return</span> <span class="ST4">x</span>;
+512     }
+513 
+514     <span class="literal">public</span> <span class="literal">void</span> <span class="ST5">setX</span>(<span class="literal">int</span> x) {
+515         <span class="literal">this</span>.<span class="ST4">x</span> = x;
+516     }
+517 
+518     <span class="literal">public</span> <span class="literal">int</span> <span class="ST5">getY</span>() {
+519         <span class="literal">return</span> <span class="ST4">y</span>;
+520     }
+521 
+522     <span class="literal">public</span> <span class="literal">void</span> <span class="ST5">setY</span>(<span class="literal">int</span> y) {
+523         <span class="literal">this</span>.<span class="ST4">y</span> = y;
+524     }
+525 }
+526 
+527 <span class="comment">//below is the Wall class</span>
+528 <span class="literal">class</span> Wall {
+529 
+530     <span class="literal">int</span> <span class="ST4">y</span>, <span class="ST4">x</span>;
+531     <span class="literal">int</span> <span class="ST4">level</span>;
+532 
+533     <span class="literal">char</span> <span class="ST4">symbol</span> = <span class="string">&#39;</span><span class="string">■</span><span class="string">&#39;</span>;
+534 
+535     <span class="literal">public</span> Wall(<span class="literal">int</span> x, <span class="literal">int</span> y) {
+536         <span class="literal">this</span>.<span class="ST4">x</span> = x;
+537         <span class="literal">this</span>.<span class="ST4">y</span> = y;
+538 
+539     }
+540 
+541     <span class="literal">public</span> <span class="literal">char</span> <span class="ST5">getSymbol</span>() {
+542         <span class="literal">return</span> <span class="ST4">symbol</span>;
+543     }
+544 
+545     <span class="literal">public</span> <span class="literal">int</span> <span class="ST5">getX</span>() {
+546         <span class="literal">return</span> <span class="ST4">x</span>;
+547     }
+548 
+549     <span class="literal">public</span> <span class="literal">void</span> <span class="ST5">setX</span>(<span class="literal">int</span> x) {
+550         <span class="literal">this</span>.<span class="ST4">x</span> = x;
+551     }
+552 
+553     <span class="literal">public</span> <span class="literal">int</span> <span class="ST5">getY</span>() {
+554         <span class="literal">return</span> <span class="ST4">y</span>;
+555     }
+556 
+557     <span class="literal">public</span> <span class="literal">void</span> <span class="ST5">setY</span>(<span class="literal">int</span> y) {
+558         <span class="literal">this</span>.<span class="ST4">y</span> = y;
+559     }
+560 }
+561 
+</pre></body>
+</html>
